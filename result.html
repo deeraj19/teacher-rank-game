@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Game Results</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="auth-screen">
+    <h2>Enter Admin Password</h2>
+    <input type="password" id="admin-pass" placeholder="Password" />
+    <button onclick="checkPassword()">Submit</button>
+  </div>
+
+  <div id="results-display" style="display:none;">
+    <h2>Player Results</h2>
+    <ul id="results-list"></ul>
+  </div>
+
+  <script src="firebase-config.js"></script>
+  <script>
+    const ADMIN_PASSWORD = "admin123"; // Change this
+
+    function checkPassword() {
+      const input = document.getElementById("admin-pass").value;
+      if (input === ADMIN_PASSWORD) {
+        document.getElementById("auth-screen").style.display = "none";
+        document.getElementById("results-display").style.display = "block";
+        loadResults();
+      } else {
+        alert("Wrong password.");
+      }
+    }
+
+    function loadResults() {
+      const list = document.getElementById("results-list");
+      const dbRef = firebase.database().ref("results");
+      dbRef.once("value", (snapshot) => {
+        snapshot.forEach((child) => {
+          const data = child.val();
+          const item = document.createElement("li");
+          item.textContent = `${data.name}: ${data.correctCount} correct`;
+          list.appendChild(item);
+        });
+      });
+    }
+  </script>
+</body>
+</html>

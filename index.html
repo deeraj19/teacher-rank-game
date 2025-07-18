@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Teacher Rank Game</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <div id="login-screen">
+    <h2>Enter Your Name</h2>
+    <input type="text" id="player-name" placeholder="Your name" />
+    <button onclick="startGame()">Start</button>
+  </div>
+
+  <div id="game-screen" style="display:none;">
+    <h2>Select Class Teachers in Order (LKG to SSLC)</h2>
+    <div id="teacher-buttons"></div>
+  </div>
+
+  <div id="result-screen" style="display:none;">
+    <h2 id="result-msg"></h2>
+    <button onclick="window.location.reload()">Play Again</button>
+  </div>
+<!-- Firebase SDKs -->
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+
+<!-- Your scripts -->
+<script src="firebase-config.js"></script>
+<script src="script.js"></script>
+<div style="margin-top: 40px;">
+  <button onclick="verifyPassword()">🔒 View Results</button>
+  <pre id="results-data" style="white-space: pre-wrap; margin-top: 15px;"></pre>
+</div>
+
+</body>
+</html>

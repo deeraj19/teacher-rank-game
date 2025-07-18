@@ -6,8 +6,8 @@ const correctOrder = [
   "Chaitra Miss",   // 3rd
   "Mamata Miss",    // 4th
   "Saraswati Miss", // 5th
-  "Chaitra Miss",   // 6th
-  "Jaya Miss",      // 7th
+  "jaya Miss",   // 6th
+  "Chaitra miss",      // 7th
   "Namata Miss",    // 8th
   "Namata Miss",    // 9th
   "Namata Miss"     // 10th
